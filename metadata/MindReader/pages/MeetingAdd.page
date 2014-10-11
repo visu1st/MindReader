@@ -1,0 +1,32 @@
+<apex:page controller="DashBoardController" docType="html-5.0">
+    <apex:form >
+        <apex:pageBlock mode="new">
+        <apex:pageMessages />
+        <fieldset>
+            <legend>New Meeting </legend>  
+            <apex:pageBlockSection >
+            <table>
+           <!-- <tr > 
+                    <td></td>
+                    <td></td>
+                    <td align="center"><img id="theImage" src="{!URLFOR($Resource.Resourceimages,'images/metting.png')}" width="50" height="50" /></td>
+            </tr> -->
+            <tr>                
+                <td><apex:inputText id="txtMeetingSubject" value="{!Meeting.Meeting_Subject__c}" style="border-radius: 5px;  border-color: #b3b3b3;"/></td>
+            </tr>
+            <tr>                
+                <td><apex:inputTextarea id="txtMeetingLocation" rows="5" cols="50" value="{!Meeting.Meeting_Location__c}" style="border-radius: 5px;  border-color: #b3b3b3;"/></td>
+            </tr>            
+            <tr>                
+                <td><apex:inputField type="date" id="txtMeetingDatetime" value="{!Meeting.Meeting_DateTime__c}" showDatePicker="false" style="width:150px;border-radius: 5px;  border-color: #b3b3b3;"/></td>
+            </tr>            
+        </table>
+        <!-- <apex:commandButton action="{!UpdateTask}" value="Update" id="btnUpdate"> </apex:commandButton>   -->
+        </apex:pageBlockSection>
+        <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Save" action="{!SaveMeeting}" style="background:#1797c0;color: white"/>
+        </apex:pageBlockButtons>
+        </fieldset>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

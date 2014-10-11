@@ -7,4 +7,5 @@
     <tab>MindReader__c</tab>
     <tab>standard-report</tab>
     <tab>standard-Dashboard</tab>
+    <tab>Dashboard</tab>
 </CustomApplication>

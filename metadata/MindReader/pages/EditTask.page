@@ -1,0 +1,47 @@
+<apex:page controller="DashBoardController" docType="html-5.0">
+    <apex:form >
+        <apex:pageBlock mode="edit">
+        <apex:pageMessages />
+        <fieldset>
+            <legend>Edit Task </legend>  
+            <apex:pageBlockSection >
+            <table>
+                <!--<tr>   
+                 <td></td>
+                 <td></td>
+                <td align="center"><img id="theImage" src="{!URLFOR($Resource.Resourceimages,'images/task.png')}" width="50" height="50" /></td>
+            </tr> -->
+            <tr>                
+                <td><apex:inputField id="txtTaskName" value="{!Task.TaskName__c}" style="border-radius: 5px;  border-color: #b3b3b3;"/></td>
+            </tr>
+            <tr>
+                
+                <td><apex:inputTextarea id="txtTaskDescription" rows="5" cols="50" value="{!Task.Task_Description__c}" style="border-radius: 5px;  border-color: #b3b3b3;"/></td>
+            </tr>
+            <tr>
+                <!--<td>Location</td>
+                <td> <apex:selectList id="countries" value="{!selectedLocation}" size="1" required="true">
+                     <apex:selectOptions value="{!Locationlist}"/>
+                    </apex:selectList>
+                </td>-->
+                <td> <apex:inputField id="txtTaskLocation" value="{!Task.TaskLocation__c}" style="border-radius: 5px;  border-color: #b3b3b3;"/></td> 
+            </tr>
+            <tr>               
+                <td><apex:inputField type="date" id="txtTaskDatetime" value="{!Task.Task_Date__c}" showDatePicker="false" style="width:150px;border-radius: 5px;  border-color: #b3b3b3;" /></td>
+            </tr>
+            <tr>                
+                <td><apex:inputField id="txtTaskStatus" value="{!Task.TaskStatus__c}" style="border-radius: 5px;  border-color: #b3b3b3;"/></td>
+            </tr>
+            <tr>
+                <td><apex:inputCheckbox id="txtIsCompleted" value="{!Task.IsCompleted__c}" style="border-radius: 5px;  border-color: #b3b3b3;"/></td>
+            </tr>
+        </table>
+        <!-- <apex:commandButton action="{!UpdateTask}" value="Update" id="btnUpdate"> </apex:commandButton>   -->
+        </apex:pageBlockSection>
+        <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Save" action="{!UpdateTask}" style="background:#1797c0;color: white"/>
+        </apex:pageBlockButtons>
+        </fieldset>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

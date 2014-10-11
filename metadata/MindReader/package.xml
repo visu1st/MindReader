@@ -3,6 +3,19 @@
     <fullName>MindReader</fullName>
     <description>MindReader for Sales Force</description>
     <types>
+        <members>DashBoardController</members>
+        <members>DashboardTest</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>Dashboard</members>
+        <members>EditMeeting</members>
+        <members>EditTask</members>
+        <members>MeetingAdd</members>
+        <members>TaskAdd</members>
+        <name>ApexPage</name>
+    </types>
+    <types>
         <members>MindReader</members>
         <name>CustomApplication</name>
     </types>
@@ -27,22 +40,37 @@
         <members>LinkedinQuickConnection__c.headline__c</members>
         <members>LinkedinQuickConnection__c.industry__c</members>
         <members>LinkedinQuickConnection__c.lastName__c</members>
+        <members>Meeting__c.Meeting_DateTime__c</members>
+        <members>Meeting__c.Meeting_Location__c</members>
+        <members>Meeting__c.Meeting_Subject__c</members>
+        <members>Task__c.IsCompleted__c</members>
+        <members>Task__c.TaskLocation__c</members>
+        <members>Task__c.TaskName__c</members>
+        <members>Task__c.TaskStatus__c</members>
+        <members>Task__c.Task_Date_Time__c</members>
+        <members>Task__c.Task_Date__c</members>
+        <members>Task__c.Task_Description__c</members>
         <name>CustomField</name>
     </types>
     <types>
         <members>DataDotComObject__c</members>
         <members>LinkedinQuickConnection__c</members>
+        <members>Meeting__c</members>
         <members>MindReader__c</members>
+        <members>Task__c</members>
         <name>CustomObject</name>
     </types>
     <types>
+        <members>Dashboard</members>
         <members>MindReader__c</members>
         <name>CustomTab</name>
     </types>
     <types>
         <members>DataDotComObject__c-DataDotComObject Layout</members>
         <members>LinkedinQuickConnection__c-LinkedInQuickConnection Layout</members>
+        <members>Meeting__c-Meeting Layout</members>
         <members>MindReader__c-MindReader Layout</members>
+        <members>Task__c-Task Layout</members>
         <name>Layout</name>
     </types>
     <types>

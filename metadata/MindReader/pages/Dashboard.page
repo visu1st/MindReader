@@ -1,0 +1,175 @@
+<apex:page controller="DashBoardController" >
+    <html>   
+    <head>    
+   
+   <script>
+    
+   window.onload = new function() { getLocation() };
+        function getLocation()
+        {
+        var x = document.getElementById("demo");
+        
+            alert("In Geoloaction");
+            if (navigator.geolocation) 
+            {
+                //      alert("In Geoloaction if part");
+                navigator.geolocation.getCurrentPosition(showPosition,showError);
+            }
+            else 
+            {
+                //       alert("In Geoloactionelse ");
+
+                x.innerHTML = "Geolocation is not supported by this browser.";
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+        function showPosition(position) 
+        {
+            var x = document.getElementById("demo");
+        
+            //  alert("Latitude: " + position.coords.latitude + 
+            //  " Longitude: " + position.coords.longitude);
+            //x.innerHTML = "Latitude: " + position.coords.latitude + 
+            //"<br>Longitude: " + position.coords.longitude; 
+            var geocoder = new google.maps.Geocoder();
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            var latLng = new google.maps.LatLng(latitude,longitude);
+            geocoder.geocode({       
+                latLng: latLng     
+                }, 
+                function(responses) 
+                {     
+                   if (responses && responses.length > 0) 
+                   {        
+                       //   alert("Latitude: " + position.coords.latitude + 
+                       //      " Longitude: " + position.coords.longitude+" address:"+responses[0].formatted_address);     
+                  
+                       //x.innerHTML = "Latitude: " + position.coords.latitude + 
+                       //"<br>Longitude: " + position.coords.longitude+
+                       "Your current location is:<br/>"+responses[0].formatted_address;
+                   } 
+                   else 
+                   {  
+                       x.innerHTML ='Not getting Any address for given latitude and longitude.';
+                     alert('Not getting Any address for given latitude and longitude.');     
+                   }   
+                }
+            );
+            
+        }
+        function getme()
+        {
+            alert("Get me...");
+        }
+        function showError(error) 
+        { 
+            alert("In Show Error");
+        switch(error.code)
+        {
+               
+        case error.PERMISSION_DENIED:
+            x.innerHTML = "User denied the request for Geolocation."
+            break;
+        case error.POSITION_UNAVAILABLE:
+            x.innerHTML = "Location information is unavailable."
+            break;
+        case error.TIMEOUT:
+            x.innerHTML = "The request to get user location timed out."
+            break;
+        case error.UNKNOWN_ERROR:
+            x.innerHTML = "An unknown error occurred."
+            break;
+    }
+}
+        function popupwindow(){
+        var newwindow = window.open('/apex/CallReportDataComponentPage','Call Report'); 
+        newwindow.focus();
+    }
+          
+    
+</script> 
+</head>
+    <body>    
+    <apex:form >    
+        Hi, Mr.<apex:outputText value="{!Userfirstname}"></apex:outputText>&nbsp;
+    <apex:outputText value="{!Userlastname}"></apex:outputText>
+    <p id="demo">Click the button to get your coordinates:</p>
+        
+        <fieldset>
+            <legend>My Tasks</legend>           
+   <!-- <apex:outputpanel id="customCheckboxPanel" layout="block" >
+                       <apex:actionStatus id="loadingDetails"   
+                           startText="Loading..."   
+                           stopText=""/>    
+                             <br/>  
+                             <apex:selectCheckboxes value="{!choices}" layout="pageDirection" onclick="window.open('/apex/EditTask')">   
+                                 <apex:selectOptions value="{!list}" >
+                                     <apex:param name="EditPage" value="{!list}" />
+                                 </apex:selectOptions>
+                               <apex:commandButton value="Done" />  
+                                 <br/>                                 
+                             </apex:selectCheckboxes>                       
+</apex:outputpanel> -->
+     <apex:pageBlock title="Tasks">
+     <apex:pageBlockTable value="{!Tasklist}" var="Task" styleClass="">
+         <!--<apex:column headerValue="Select" style="width:10px">
+            <apex:inputCheckbox title="{!Task['IsCompleted__c']}" onclick="window.open('/apex/EditTask?id={!Task['id']}')" />         
+        </apex:column> -->
+        <apex:column value="{!Task['IsCompleted__c']}" style="width:10px" headerValue="Completed" ></apex:column>   
+        <apex:column value="{!Task['TaskName__c']}" headerValue="Task Name"/>
+       <apex:column value="{!Task['TaskStatus__c']}" headerValue="Task Status"></apex:column>           
+       <apex:column >           
+           <apex:commandButton value="Edit"   onclick="window.open('/apex/EditTask?id={!Task['id']}')" />
+          <!-- onclick="window.open('/apex/EditTask?id={!Tasks['id']}')"  action="/apex/EditTask?id={!Tasks['id']}"  -->
+       </apex:column>
+     </apex:pageBlockTable>    
+         
+     </apex:pageBlock>
+<apex:commandButton value="New Task" id="btnNewTask" onclick="window.open('/apex/TaskAdd')"> </apex:commandButton>           
+            </fieldset>
+            <fieldset>
+            <legend>My Tickets</legend>
+            
+            </fieldset>
+            
+            <fieldset>
+            <legend>My Feeds</legend>
+            
+            </fieldset>
+        
+            <fieldset>
+            <legend>My Meetings</legend>
+            <!--    <apex:outputpanel id="CheckboxPanelMeeting" layout="block" >
+                       <apex:actionStatus id="loadingDetailsMeeting"   
+                           startText="Loading..."   
+                           stopText=""/>    
+                             <br/>  
+                             <apex:selectCheckboxes value="{!Meetingchoices}" layout="pageDirection">  
+                               <apex:selectOptions value="{!Meetinglist}"/>
+                               <apex:commandButton value="Done" />  
+                                 <br/>                                 
+                             </apex:selectCheckboxes>                       
+                </apex:outputpanel> -->
+                <apex:pageBlock title="Meetings">
+     <apex:pageBlockTable value="{!Meetinglist}" var="Meetings">
+     <apex:column headerValue="Select" style="width:10px">
+            <apex:inputCheckbox title="{!Meetings['Meeting_Subject__c']}" onclick="window.open('/apex/EditTask?id={!Meetings['id']}')" />         
+        </apex:column>
+        <apex:column value="{!Meetings['Meeting_Subject__c']}"/>
+       <apex:column value="{!Meetings['Meeting_Location__c']}"></apex:column>       
+       <apex:column value="{!Meetings['Meeting_DateTime__c']}"></apex:column>       
+       <apex:column >
+       <apex:commandButton value="Edit" onclick="window.open('/apex/EditMeeting?MeetingId={!Meetings['id']}')"/>
+          <!-- onclick="window.open('/apex/EditTask?id={!Tasks['id']}')"  action="/apex/EditTask?id={!Tasks['id']}"  -->
+       </apex:column>
+     </apex:pageBlockTable>         
+     </apex:pageBlock>
+        <apex:commandButton value="New Meeting" id="btnNewMeeting" onclick="window.open('/apex/MeetingAdd')"> </apex:commandButton>
+            </fieldset>
+    </apex:form>
+    </body>
+    </html>
+    <!-- Google Maps -->
+   <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true"></script>
+</apex:page>
