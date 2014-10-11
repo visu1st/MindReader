@@ -7,6 +7,31 @@
         <name>CustomApplication</name>
     </types>
     <types>
+        <members>DataDotComObject__c.City__c</members>
+        <members>DataDotComObject__c.CompanyName__c</members>
+        <members>DataDotComObject__c.ContactId__c</members>
+        <members>DataDotComObject__c.Country__c</members>
+        <members>DataDotComObject__c.Departments__c</members>
+        <members>DataDotComObject__c.Description__c</members>
+        <members>DataDotComObject__c.Email_Id__c</members>
+        <members>DataDotComObject__c.FirstName__c</members>
+        <members>DataDotComObject__c.Industry__c</members>
+        <members>DataDotComObject__c.LastName__c</members>
+        <members>DataDotComObject__c.Level__c</members>
+        <members>DataDotComObject__c.State__c</members>
+        <members>DataDotComObject__c.Title__c</members>
+        <members>DataDotComObject__c.Website__c</members>
+        <members>LinkedinQuickConnection__c.LinkedinId__c</members>
+        <members>LinkedinQuickConnection__c.Linkedin_Address__c</members>
+        <members>LinkedinQuickConnection__c.firstName__c</members>
+        <members>LinkedinQuickConnection__c.headline__c</members>
+        <members>LinkedinQuickConnection__c.industry__c</members>
+        <members>LinkedinQuickConnection__c.lastName__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>DataDotComObject__c</members>
+        <members>LinkedinQuickConnection__c</members>
         <members>MindReader__c</members>
         <name>CustomObject</name>
     </types>
@@ -15,6 +40,8 @@
         <name>CustomTab</name>
     </types>
     <types>
+        <members>DataDotComObject__c-DataDotComObject Layout</members>
+        <members>LinkedinQuickConnection__c-LinkedInQuickConnection Layout</members>
         <members>MindReader__c-MindReader Layout</members>
         <name>Layout</name>
     </types>
